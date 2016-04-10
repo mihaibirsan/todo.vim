@@ -109,8 +109,9 @@ fu! ToggleMark(mark, otherPossibleMarks)
         return
     end
 
-    if match(line, '^[' . a:otherPossibleMarks . ']') == 0
-        call setline(".", line[3:])
+    let marksAtTheBeginning = '^[' . a:otherPossibleMarks . ']'
+    if match(line, marksAtTheBeginning) == 0
+        call setline(".", substitute(line, marksAtTheBeginning, '', ''))
     else
         call setline(".", a:mark . line)
     endif
