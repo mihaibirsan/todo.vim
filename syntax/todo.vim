@@ -2,7 +2,11 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn match Category /\v^\>\>.*/
+syn match TodoistAdded /\v^.+ •/
+syn match Category /\v^\>\>.{-}\ze\w?$/
+syn match Category1 /\v^\>\>\>.{-}\ze\w?$/
+syn match Category2 /\v\>\>\>\>.{-}\ze\w?$/
+syn match CategoryError /\v(^\>.+)@<=\w$/
 syn match TodoCompleted /\v^((  )*)✓.*(\n\1  .*)*/
 syn match TodoPostponed /\v^((  )*)\~.*(\n\1  .*)*/
 syn match TodoDiscarded /\v^((  )*)✗.*(\n\1  .*)*/

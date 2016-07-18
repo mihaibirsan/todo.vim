@@ -1,13 +1,19 @@
 setlocal shiftwidth=2
 setlocal tabstop=2
 
-hi link Category StatusLine
+hi TodoistAdded term=standout ctermfg=16 guibg=#333344 guifg=#FFFFFF
+hi CategoryError term=reverse ctermfg=15 ctermbg=12 guifg=White guibg=Red gui=italic
+hi Category guifg=black guibg=grey gui=italic
+hi Category1 guifg=black guibg=white gui=italic
+hi Category2 term=standout cterm=italic,bold ctermbg=229 ctermfg=16 gui=italic,bold guibg=#FFFABC guifg=#000000
+hi CategoryError term=reverse ctermfg=15 ctermbg=12 guifg=White guibg=Red gui=italic
 hi TodoCompleted guifg=#666666
-hi TodoPostponed guifg=#663300
+hi TodoPostponed guifg=#999999 term=italic cterm=italic gui=italic
 hi TodoDiscarded guifg=#993333
 hi link TodoNext Todo
 hi TodoSoon term=standout ctermfg=229 ctermbg=16 guifg=#FFFABC guibg=#1F1E16
 " TODO: Fix the ctermfg for the TodoTag
+
 hi TodoAdded guifg=#5EB1FF
 hi TodoRemoved guifg=#FF5E71
 hi TodoExpandedBelow guifg=#A1FF9E
@@ -55,8 +61,12 @@ function! s:MoveSection(dir)
         " Move current section before the previous section, or the the end of file
         let [ l:startlnum, l:devnull ] = searchpos(g:sectionBegin, 'cbW')
         let [ l:endlnum, l:devnull ] = searchpos(g:sectionEnd, 'n')
-        let [ l:newlnum, l:devnull ] = searchpos(g:sectionBegin, 'bw')
-        let l:newlnum = l:newlnum - 1
+        let [ l:newlnum, l:devnull ] = searchpos(g:sectionBegin, 'bW')
+        if (l:newlnum == 0)
+            let l:newlnum = line("$")
+        else
+            let l:newlnum = l:newlnum - 1
+        endif
     else
         " Move current section after the next section, or at the beginning of file
         let [ l:startlnum, l:devnull ] = searchpos(g:sectionBegin, 'cbW')
@@ -79,19 +89,6 @@ nnoremap <script> <buffer> <silent> <A-S-Down> :call <SID>MoveSection(1)<cr>
 
 " TODO: see http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
 " TODO: syn region CategoryGroup start=/^>>/ end=/\n\ze>>/
-
-setlocal nonumber
-hi clear SignColumn
-hi link SignColumn Normal
-sign define Category linehl=StatusLine texthl=StatusLine text=>>
-
-let g:high_ind = 0
-fun! IncHighlightInd()
-    let g:high_ind = g:high_ind + 1
-    return g:high_ind
-endf
-nmap <buffer> <silent> <F1> :silent sign place <C-R>=IncHighlightInd()<CR> name=Category line=<C-R>=line(".")<CR> file=<C-R>=expand("%:p")<CR><CR>
-nmap <buffer> <silent> <C-F1> :silent sign unplace<CR>
 
 fu! ToggleMark(mark, otherPossibleMarks)
     let line = getline(".")
@@ -224,8 +221,4 @@ setlocal foldexpr=FoldExpr()
 setlocal foldtext=FoldText()
 
 setlocal wrap linebreak showbreak=\ \ \ \ 
-
-" re-place all signs
-silent execute ":sign unplace * file=" . expand("%:p")
-silent g/^>>/execute "normal \<F1>" | noh | normal gg
 
