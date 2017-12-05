@@ -1,0 +1,4 @@
+Screenshot take on iTerm 2 3.1.4 on a macOS 10.12.6
+12pt DejaVu Sans Mono
+Antialiased
+100% spacing

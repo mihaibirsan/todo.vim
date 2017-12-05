@@ -1,23 +1,23 @@
 setlocal shiftwidth=2
 setlocal tabstop=2
 
-hi TodoistAdded term=standout ctermfg=16 guibg=#333344 guifg=#FFFFFF
-hi CategoryError term=reverse ctermfg=15 ctermbg=12 guifg=White guibg=Red gui=italic
-hi Category guifg=black guibg=grey gui=italic
-hi Category1 guifg=black guibg=white gui=italic
+" `colortrans.py` has been used to obtain cterm values for given hex values
+" see https://gist.github.com/MicahElliott/719710
+hi TodoistAdded term=standout ctermfg=White guibg=#333344 guifg=#FFFFFF
+hi CategoryError ctermfg=White ctermbg=196 cterm=italic guifg=White guibg=Red gui=italic
+hi Category ctermfg=16 ctermbg=Grey cterm=italic guifg=Black guibg=Grey gui=italic
+hi Category1 ctermfg=16 ctermbg=White cterm=italic guifg=black guibg=white gui=italic
 hi Category2 term=standout cterm=italic,bold ctermbg=229 ctermfg=16 gui=italic,bold guibg=#FFFABC guifg=#000000
-hi CategoryError term=reverse ctermfg=15 ctermbg=12 guifg=White guibg=Red gui=italic
-hi TodoCompleted guifg=#666666
-hi TodoPostponed guifg=#999999 term=italic cterm=italic gui=italic
-hi TodoDiscarded guifg=#993333
-hi link TodoNext Todo
-hi TodoSoon term=standout ctermfg=229 ctermbg=16 guifg=#FFFABC guibg=#1F1E16
-" TODO: Fix the ctermfg for the TodoTag
+hi TodoCompleted guifg=#666666 ctermfg=59
+hi TodoPostponed guifg=#999999 ctermfg=102 term=italic cterm=italic gui=italic
+hi TodoDiscarded guifg=#993333 ctermfg=131
+hi TodoNext term=standout cterm=bold ctermfg=229 gui=bold guifg=#FFFABC
+hi TodoSoon term=standout ctermfg=229 guifg=#FFFABC
 
-hi TodoAdded guifg=#5EB1FF
-hi TodoRemoved guifg=#FF5E71
-hi TodoExpandedBelow guifg=#A1FF9E
-hi TodoTag term=standout ctermfg=229 ctermbg=16 guifg=#A1FF9E guibg=#151F14
+hi TodoAdded guifg=#5EB1FF ctermfg=75
+hi TodoRemoved guifg=#FF5E71 ctermfg=203
+hi TodoExpandedBelow guifg=#A1FF9E ctermfg=157
+hi TodoTag term=standout guifg=#A1FF9E ctermfg=157
 
 let g:sectionBegin = '^\ze>>'
 let g:sectionEnd = '\n\ze>>\|\%$'
@@ -116,6 +116,7 @@ endf
 
 nmap <buffer> <silent> <CR> :call ToggleMark('✓', '✓✗~→⇨')<CR>
 nmap <buffer> <silent> <C-CR> :call ToggleMark('✗', '✓✗~→⇨')<CR>
+nmap <buffer> <silent> <C-B> :call ToggleMark('✗', '✓✗~→⇨')<CR>
 nmap <buffer> <silent> <C-X> :call ToggleMark('⇨', '✓✗~→⇨')<CR>
 nmap <buffer> <silent> <C-N> :call ToggleMark('→', '✓✗~→⇨')<CR>
 

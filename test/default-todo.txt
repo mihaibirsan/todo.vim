@@ -1,0 +1,46 @@
+
+>>>> Category2 
+
+>>> Category1 
+
+>> Category 
+
+>> CategoryError
+
+Default Todo Item
+✓Completed Todo Item
+~Postponed Todo Item
+✗Discarded Todo Item
+→Next Todo Item
+⇨Soon Todo Item
++Added Todo Item
+-Removed Todo Item
+@ExpandedBelow Todo Item
+Todo Item With A @tag
+Todoist Project Name • Todoist Todo Item
+
+Sub-items
+  * Default Todo Item
+    * Level 3
+      * Level 4
+  ✓ This is completed
+  ~ Postponed Todo Item
+  ✗ Discarded Todo Item
+  → Next Todo Item
+  ⇨ Soon Todo Item
+  + Added Todo Item
+  - Removed Todo Item
+  @ ExpandedBelow Todo Item
+  * Todo Item With A @tag
+
+>> ## Markdown Category
+
+## Markdown is awesome
+
+***Srsly!*** we're formatting **bold** and *italic* on the fly!
+
+```javascript
+// Doesn't nest well, alas.
+var foo = bar();
+```
+
