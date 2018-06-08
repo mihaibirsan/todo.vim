@@ -92,24 +92,21 @@ nnoremap <script> <buffer> <silent> <A-S-Down> :call <SID>MoveSection(1)<cr>
 
 fu! ToggleMark(mark, otherPossibleMarks)
     let line = getline(".")
-    if match(line, '\v^(  )+') == 0
-        let whitespaceMatcher = '\v^((  )+)[' . a:otherPossibleMarks . '] '
-        let whitespaceNormal = '\v^((  )+)\* '
-        if match(line, whitespaceMatcher) == 0
-            call setline(".", substitute(line, whitespaceMatcher, '\1* ', ''))
-            " normal ^dl
-        elseif match(line, whitespaceNormal) == 0
-            call setline(".", substitute(line, whitespaceNormal, '\1' . a:mark . ' ', ''))
-            " setreg('.', a:mark)
-            " normal ^cl<c-r>.<esc>
-        endif
-        return
-    end
 
+    let whitespaceMatcher = '\v^((  )*)[' . a:otherPossibleMarks . '] '
+    let whitespaceNormal = '\v^((  )*)\* '
     let marksAtTheBeginning = '^[' . a:otherPossibleMarks . ']'
-    if match(line, marksAtTheBeginning) == 0
+
+    if match(line, whitespaceMatcher) == 0
+        call setline(".", substitute(line, whitespaceMatcher, '\1* ', ''))
+        " normal ^dl
+    elseif match(line, whitespaceNormal) == 0
+        call setline(".", substitute(line, whitespaceNormal, '\1' . a:mark . ' ', ''))
+        " setreg('.', a:mark)
+        " normal ^cl<c-r>.<esc>
+    elseif match(line, marksAtTheBeginning) == 0
         call setline(".", substitute(line, marksAtTheBeginning, '', ''))
-    else
+    elseif match(line, '\v^ ') != 0
         call setline(".", a:mark . line)
     endif
 endf

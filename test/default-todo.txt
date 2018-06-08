@@ -19,6 +19,9 @@ Default Todo Item
 Todo Item With A @tag
 Todoist Project Name • Todoist Todo Item
 
+* Todo Item as List
+✓ The key is the space following the star
+
 Sub-items
   * Default Todo Item
     * Level 3

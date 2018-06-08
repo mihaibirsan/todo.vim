@@ -33,7 +33,7 @@ Using a keyboard shortcut on a task that already has a status will first remove 
 
 **Sub-Tasks**
 
-Tasks can be indented to for sub-tasks. Though tasks at the beginning of the line don't have a delimiter, sub-tasks must have a `* ` preceded (a star followed by a space). The star would be replaced by the status symbol when operating with the keyboard shortcuts.
+Tasks can be indented to for sub-tasks. Though tasks at the beginning of the line may omit the delimiter, sub-tasks must have a `* ` preceded (a star followed by a space). The star would be replaced by the status symbol when operating with the keyboard shortcuts.
 
 Status affects the way sub-tasks are displayed. A completed or discarded parent task will shade all sub-tasks, for example.
 
