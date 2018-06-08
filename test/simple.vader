@@ -1,0 +1,37 @@
+Before:
+# TODO: Unfold everything before running tests; for some reason todo.txt starts with folds
+  normal zR
+
+Given todo (simple):
+  Task on the first line
+      This is a comment now
+  ✓ Completed list-task on the second line
+    * subtask not completed
+
+Do (complete the first task):
+  \<Enter>
+
+Expect todo (completed):
+  ✓Task on the first line
+      This is a comment now
+  ✓ Completed list-task on the second line
+    * subtask not completed
+
+Do (complete the second task):
+  jj\<Enter>
+
+Expect todo (completed):
+  Task on the first line
+      This is a comment now
+  * Completed list-task on the second line
+    * subtask not completed
+
+Do (comments should not be completed):
+  j\<Enter>
+
+Expect todo (noop):
+  Task on the first line
+      This is a comment now
+  ✓ Completed list-task on the second line
+    * subtask not completed
+

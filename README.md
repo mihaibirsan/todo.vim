@@ -51,3 +51,8 @@ In addition to status, whole tasks can be highlighted by using a symbol at the b
 |  `-`   | removed / negative         |
 |  `@`   | expanded below / reference |
 
+### Tested with Vader
+
+1. Install [vader.vim](https://github.com/junegunn/vader.vim)
+2. Run `:Vader test/*.vader` to run all tests
+

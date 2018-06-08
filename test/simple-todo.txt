@@ -1,0 +1,7 @@
+Task on the first line
+    This is a comment now
+✓ Completed list-task on the second line
+  * subtask not completed
++Added task without spaces
+-Deleted task without spaces
+
